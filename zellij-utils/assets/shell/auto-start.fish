@@ -13,7 +13,9 @@ if not set -q ZELLIJ
         zellij
     end
 
-    if test "$ZELLIJ_AUTO_EXIT" = "true"
+    if test $status -ne 0
+        echo "Zellij Error! Exit code: $status"
+    else if test "$ZELLIJ_AUTO_EXIT" = "true"
         kill $fish_pid
     end
 end

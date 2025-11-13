@@ -20,6 +20,7 @@ message ClientToServerMsg {
     ConnStatusMsg conn_status = 13;
     WebServerStartedMsg web_server_started = 14;
     FailedToStartWebServerMsg failed_to_start_web_server = 15;
+    AttachWatcherClientMsg attach_watcher_client = 16;
   }
 }
 
@@ -59,10 +60,15 @@ message AttachClientMsg {
   bool is_web_client = 4;
 }
 
+message AttachWatcherClientMsg {
+  Size terminal_size = 1;
+}
+
 message ActionMsg {
   Action action = 1;
   optional uint32 terminal_id = 2;
   optional uint32 client_id = 3;
+  bool is_cli_client = 4;
 }
 
 message KeyMsg {
